@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/mandus1974/node_js_proyecto_01_videoteca#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "@hapi/joi": "^17.1.0",
+    "config": "^3.2.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
   }
 }
