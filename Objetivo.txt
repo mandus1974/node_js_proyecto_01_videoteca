@@ -1,0 +1,40 @@
+Realizar un proyecto que contenga los siguientes conociemientos.
+
+Utilizar:
+	1)  node.js
+		- modulos
+	2)  express (framework)
+	3)  debug
+	4)  @hapi/joi
+	5) 	morgan
+	6) 	github
+	7) 	heroku
+	
+=========================
+Proyecto.
+	
+	Objetivo: Crear un proyecto API REST con node.js que haga CRUD a una base de datos (no persistente) de peliculas.
+	
+Desarrollo.
+
+	pelicula
+	===========
+	id
+	nombre
+	año
+	genero
+	calificacion
+	resumen
+	
+Filtros
+
+	id
+	que contenga nombre
+	rango años
+	generos
+	rango calificacion
+	que contenga en resumen
+	
+
+	
+	
