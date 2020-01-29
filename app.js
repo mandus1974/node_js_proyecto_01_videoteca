@@ -1,5 +1,12 @@
+// REQUIRE
 var express = require('express');
+var morgan = require('morgan')
+
+// app express
 var app = express();
+
+// Middleware
+app.use(morgan('combined'))
 
 
 
