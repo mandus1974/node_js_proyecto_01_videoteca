@@ -4,6 +4,8 @@ var morgan = require('morgan')
 const config = require("config");
 const Joi = require("@hapi/joi");
 
+// REQUIRE PROPIOS
+const fnGenerales = require("./lib/fnGenerales");
 
 // declaraciones
 var app = express();
@@ -13,6 +15,7 @@ const debug_second = require("debug")("app:second");
 
 // Middleware
 app.use(morgan('tiny'));
+app.use(express.json());
 
 
 /// SHEMAS
@@ -34,12 +37,52 @@ debug_main("Habilitado Debug=app:main");
 debug_second("Habilitado Debug=app:second");
 
 
+// ---------- VIDEOTECA -------------
 
+const videoteca = [
+  {id:1, nombre : "TRON", year : 1984, gen : "FiSci", cal : 10, resumen : "dentro de mundo virtual" },
+  {id : 2, nombre : "MATRIX", year : 1999, gen : "FiSci", cal : 10, resumen : "dentro de mundo virtual" },
+  {id : 3, nombre : "HP", year : 2001, gen : "Fantasia", cal : 10, resumen : "mundo mágico" }
+];
+
+// ------------------- GET ----------------------
 app.get('/', function (req, res) {
-  res.send('Hola Mundo!');
+  res.send('vt = Videoteca');
 });
 
+app.get('/vt', function (req, res) {
+  res.send(videoteca);
+});
+
+app.get('/vt/:id', function (req, res) {  
+  video = fnGenerales.buscar_por_id(videoteca, req.params.id);   
+  if(video)
+    res.send(video);
+  else
+    res.send(`Id ${req.params.id} no encontrado`);
+});
+
+app.get('/vt/:nombre', function (req, res) {  
+  video = fnGenerales.buscar_por_nombre(videoteca, req.params.nombre);   
+  if(video)
+    res.send(video);
+  else
+    res.send(`Nombre ${req.params.nombre} no encontrado`);
+});
+
+
+
+// ------------------- POST ----------------------
+app.post('/vt/',(req, res) =>{  
+  video = fnGenerales.buscar_por_nombre(videoteca, req.body.nombre);  
+  res.send(video);
+});
+
+
+//  ===== LISTEN
 app.listen( process.env.PORT, function () {
   console.log('Example app listening on port !');
   console.log(process.env.PORT);
 });
+
+
